@@ -42,7 +42,7 @@
         },
       }
     </script>
-</head>
+  </head>
 <body class="font-display bg-background-light dark:bg-background-dark text-charcoal dark:text-white" id="top">
 <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root">
     <!-- Primary navigation header -->
@@ -66,7 +66,8 @@
                 <a class="text-charcoal/80 dark:text-white/80 text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary transition-colors" href="index.html">Home</a>
                 <a class="text-charcoal/80 dark:text-white/80 text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary transition-colors" href="journey.html">Journey</a>
                 <a class="text-charcoal/80 dark:text-white/80 text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary transition-colors" href="gallery.html">Gallery</a>
-
+                <a class="text-charcoal/80 dark:text-white/80 text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary transition-colors" href="performances.html">Performances</a>
+                <a class="text-charcoal/80 dark:text-white/80 text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary transition-colors" href="blog.html">Blog</a>
                 <a class="text-primary text-sm font-bold leading-normal relative" href="#top">Contact
                     <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-primary"></span>
                 </a>
@@ -102,6 +103,8 @@
                 <a class="text-white/80 text-sm font-medium leading-normal hover:text-primary transition-colors" href="index.html">Home</a>
                 <a class="text-white/80 text-sm font-medium leading-normal hover:text-primary transition-colors" href="journey.html">Journey</a>
                 <a class="text-white/80 text-sm font-medium leading-normal hover:text-primary transition-colors" href="gallery.html">Gallery</a>
+                <a class="text-white/80 text-sm font-medium leading-normal hover:text-primary transition-colors" href="performances.html">Performances</a>
+                <a class="text-white/80 text-sm font-medium leading-normal hover:text-primary transition-colors" href="blog.html">Blog</a>
                 <a class="text-primary text-sm font-bold leading-normal hover:text-primary/80 transition-colors" href="contact.html">Contact</a>
             </nav>
         </div>
@@ -123,33 +126,42 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
                 <!-- Contact Form -->
                 <div class="bg-white dark:bg-[#27221c] rounded-2xl p-8 shadow-sm border border-charcoal/5 dark:border-white/5">
-                    <form action="#" method="POST" class="space-y-6">
+                    <!-- Success/Error Message Display -->
+                    <div id="form-message" class="hidden mb-6 p-4 rounded-lg"></div>
+                    
+                    <form action="https://api.web3forms.com/submit" method="POST" id="contact-form" class="space-y-6">
+                        <!-- Web3Forms Access Key -->
+                        <input type="hidden" name="access_key" value="cd8a3630-a7f3-42e3-bec3-c3ed5210bad1">
+                        
+                        <!-- Redirect URL after successful submission (optional) -->
+                        <input type="hidden" name="redirect" value="false">
+                        
                         <div>
                             <label for="name" class="block text-sm font-medium leading-6 text-charcoal dark:text-white">Name</label>
                             <div class="mt-2">
-                                <input type="text" name="name" id="name" autocomplete="name" class="block w-full rounded-md border-0 py-2.5 text-charcoal shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 bg-transparent dark:bg-white/5 dark:text-white dark:ring-white/10" placeholder="Your name">
+                                <input type="text" name="name" id="name" autocomplete="name" required class="block w-full rounded-md border-0 py-2.5 text-charcoal shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 bg-transparent dark:bg-white/5 dark:text-white dark:ring-white/10" placeholder="Your name">
                             </div>
                         </div>
                         <div>
                             <label for="email" class="block text-sm font-medium leading-6 text-charcoal dark:text-white">Email</label>
                             <div class="mt-2">
-                                <input type="email" name="email" id="email" autocomplete="email" class="block w-full rounded-md border-0 py-2.5 text-charcoal shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 bg-transparent dark:bg-white/5 dark:text-white dark:ring-white/10" placeholder="you@example.com">
+                                <input type="email" name="email" id="email" autocomplete="email" required class="block w-full rounded-md border-0 py-2.5 text-charcoal shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 bg-transparent dark:bg-white/5 dark:text-white dark:ring-white/10" placeholder="you@example.com">
                             </div>
                         </div>
                         <div>
                             <label for="subject" class="block text-sm font-medium leading-6 text-charcoal dark:text-white">Subject</label>
                             <div class="mt-2">
-                                <input type="text" name="subject" id="subject" class="block w-full rounded-md border-0 py-2.5 text-charcoal shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 bg-transparent dark:bg-white/5 dark:text-white dark:ring-white/10" placeholder="What is this about?">
+                                <input type="text" name="subject" id="subject" required class="block w-full rounded-md border-0 py-2.5 text-charcoal shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 bg-transparent dark:bg-white/5 dark:text-white dark:ring-white/10" placeholder="What is this about?">
                             </div>
                         </div>
                         <div>
                             <label for="message" class="block text-sm font-medium leading-6 text-charcoal dark:text-white">Message</label>
                             <div class="mt-2">
-                                <textarea id="message" name="message" rows="4" class="block w-full rounded-md border-0 py-2.5 text-charcoal shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 bg-transparent dark:bg-white/5 dark:text-white dark:ring-white/10" placeholder="Your message..."></textarea>
+                                <textarea id="message" name="message" rows="4" required class="block w-full rounded-md border-0 py-2.5 text-charcoal shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 bg-transparent dark:bg-white/5 dark:text-white dark:ring-white/10" placeholder="Your message..."></textarea>
                             </div>
                         </div>
                         <div>
-                            <button type="submit" class="flex w-full justify-center rounded-xl bg-primary px-3 py-3 text-sm font-bold leading-6 text-background-dark shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors">Send Message</button>
+                            <button type="submit" id="submit-btn" class="flex w-full justify-center rounded-xl bg-primary px-3 py-3 text-sm font-bold leading-6 text-background-dark shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors">Send Message</button>
                         </div>
                     </form>
                 </div>
@@ -163,21 +175,21 @@
                                 <span class="material-symbols-outlined text-primary shrink-0">mail</span>
                                 <div>
                                     <dt class="sr-only">Email</dt>
-                                    <dd><a class="hover:text-primary transition-colors" href="mailto:hello@nanditha.com">hello@nanditha.com</a></dd>
+                                    <dd><a class="hover:text-primary transition-colors" href="mailto:nandithamenon1729@gmail.com">nandithamenon1729@gmail.com</a></dd>
                                 </div>
                             </div>
                             <div class="flex gap-x-4">
                                 <span class="material-symbols-outlined text-primary shrink-0">location_on</span>
                                 <div>
                                     <dt class="sr-only">Location</dt>
-                                    <dd>Bangalore, India</dd>
+                                    <dd>Thrissur, Kerala, India</dd>
                                 </div>
                             </div>
                             <div class="flex gap-x-4">
                                 <span class="material-symbols-outlined text-primary shrink-0">call</span>
                                 <div>
                                     <dt class="sr-only">Phone</dt>
-                                    <dd><a class="hover:text-primary transition-colors" href="tel:+919876543210">+91 98765 43210</a></dd>
+                                    <dd><a class="hover:text-primary transition-colors" href="tel:+91949173214">+91 94917 3214</a></dd>
                                 </div>
                             </div>
                         </dl>
@@ -186,24 +198,12 @@
                     <div>
                         <h3 class="text-2xl font-display font-bold text-charcoal dark:text-white mb-6">Follow Me</h3>
                         <div class="flex gap-6">
-                            <a href="#" class="text-charcoal/60 dark:text-stone-400 hover:text-primary dark:hover:text-primary transition-colors">
+                            <a href="https://www.instagram.com/nanditha_dance?igsh=cnQzMzVqZ3AzOHhh" target="_blank" rel="noopener noreferrer" class="text-charcoal/60 dark:text-stone-400 hover:text-primary dark:hover:text-primary transition-colors">
                                 <span class="sr-only">Instagram</span>
                                 <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect>
                                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                                     <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-                                </svg>
-                            </a>
-                            <a href="#" class="text-charcoal/60 dark:text-stone-400 hover:text-primary dark:hover:text-primary transition-colors">
-                                <span class="sr-only">Facebook</span>
-                                <svg class="h-8 w-8" fill="currentColor" viewbox="0 0 24 24" aria-hidden="true">
-                                    <path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd" />
-                                </svg>
-                            </a>
-                            <a href="#" class="text-charcoal/60 dark:text-stone-400 hover:text-primary dark:hover:text-primary transition-colors">
-                                <span class="sr-only">YouTube</span>
-                                <svg class="h-8 w-8" fill="currentColor" viewbox="0 0 24 24" aria-hidden="true">
-                                    <path clip-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.78 22 12 22 12s0 3.22-.42 4.814a2.506 2.506 0 0 1-1.768 1.768c-1.594.42-7.812.42-7.812.42s-6.218 0-7.812-.42a2.506 2.506 0 0 1-1.768-1.768C2 15.22 2 12 2 12s0-3.22.42-4.814a2.506 2.506 0 0 1 1.768-1.768C5.782 5 12 5 12 5s6.218 0 7.812.418ZM15.925 12.01l-5.416 3.01V9.001l5.416 3.009z" fill-rule="evenodd" />
                                 </svg>
                             </a>
                         </div>
@@ -219,21 +219,11 @@
             <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
                 <p class="text-xs text-charcoal/60 dark:text-stone-400">© 2025 Nanditha. All Rights Reserved.</p>
                 <div class="flex items-center gap-4">
-                    <a class="text-charcoal/60 dark:text-stone-400 hover:text-primary dark:hover:text-primary transition-colors" data-alt="Social media link: Instagram" href="#">
+                    <a class="text-charcoal/60 dark:text-stone-400 hover:text-primary dark:hover:text-primary transition-colors" data-alt="Social media link: Instagram" href="https://www.instagram.com/nanditha_dance?igsh=cnQzMzVqZ3AzOHhh" target="_blank" rel="noopener noreferrer">
                         <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect>
                             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                             <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-                        </svg>
-                    </a>
-                    <a class="text-charcoal/60 dark:text-stone-400 hover:text-primary dark:hover:text-primary transition-colors" data-alt="Social media link: Facebook" href="#">
-                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24">
-                            <path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                    <a class="text-charcoal/60 dark:text-stone-400 hover:text-primary dark:hover:text-primary transition-colors" data-alt="Social media link: YouTube" href="#">
-                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24">
-                            <path clip-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.78 22 12 22 12s0 3.22-.42 4.814a2.506 2.506 0 0 1-1.768 1.768c-1.594.42-7.812.42-7.812.42s-6.218 0-7.812-.42a2.506 2.506 0 0 1-1.768-1.768C2 15.22 2 12 2 12s0-3.22.42-4.814a2.506 2.506 0 0 1 1.768-1.768C5.782 5 12 5 12 5s6.218 0 7.812.418ZM15.925 12.01l-5.416 3.01V9.001l5.416 3.009z" fill-rule="evenodd"></path>
                         </svg>
                     </a>
                 </div>
@@ -281,7 +271,67 @@ document.addEventListener('DOMContentLoaded', function () {
       if (toggleButton) closeMenu(toggleButton);
     });
   }
+
+  // Contact Form Handling
+  var contactForm = document.getElementById('contact-form');
+  var formMessage = document.getElementById('form-message');
+  var submitBtn = document.getElementById('submit-btn');
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Disable submit button and show loading state
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      
+      // Hide any previous messages
+      formMessage.classList.add('hidden');
+      
+      // Get form data
+      var formData = new FormData(contactForm);
+      
+      // Submit to Web3Forms
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        if (data.success) {
+          // Show success message
+          formMessage.textContent = 'Thank you! Your message has been sent successfully. I\'ll get back to you soon.';
+          formMessage.className = 'mb-6 p-4 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 border border-green-300 dark:border-green-700';
+          formMessage.classList.remove('hidden');
+          
+          // Reset form
+          contactForm.reset();
+          
+          // Scroll to message
+          formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          throw new Error(data.message || 'Form submission failed');
+        }
+      })
+      .catch(function(error) {
+        // Show error message
+        formMessage.textContent = 'Oops! Something went wrong. Please try again or contact me directly at nandithamenon1729@gmail.com';
+        formMessage.className = 'mb-6 p-4 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 border border-red-300 dark:border-red-700';
+        formMessage.classList.remove('hidden');
+        
+        console.error('Form submission error:', error);
+      })
+      .finally(function() {
+        // Re-enable submit button
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      });
+    });
+  }
 });
 </script>
 </body>
+
 </html>
