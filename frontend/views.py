@@ -82,6 +82,7 @@ def delete_gallery_image(request, pk):
     img = GalleryImage.objects.get(id=pk)
     img.delete()
     return redirect('admin_gallery')
+# Frontend view for gallery
 
 def gallery(request):
     images = GalleryImage.objects.all().order_by('-uploaded_at')
