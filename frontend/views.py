@@ -102,6 +102,7 @@ def edit_gallery_image(request):
         return redirect("admin_gallery")
 
 
+
 def all_posts(request):
     return render(request, "admin/all_posts.html")
 
